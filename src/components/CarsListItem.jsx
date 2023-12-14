@@ -1,13 +1,18 @@
 import React from "react";
 import { SimpleCard } from "./generic/SimpleCard";
+import { useRemoveCarMutation } from "../store/apis/carsApi";
 
 const CarsListItem = ({ car }) => {
-  const handleRemove = () => {};
+  const [removeCar, result] = useRemoveCarMutation();
+
+  const handleRemove = () => {
+    removeCar(car);
+  };
   return (
     <SimpleCard
       name={car.name}
       onDelete={handleRemove}
-      isLoading={false}
+      isLoading={result.isLoading}
     ></SimpleCard>
   );
 };
