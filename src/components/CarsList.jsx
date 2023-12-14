@@ -1,7 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import CarListItem from "./CarsListItem";
 import { CarSkeleton } from "./skeletons/CarSkeleton";
-import { useGetCarsQuery } from "../store/apis/carsApi";
+import { useAddCarMutation, useGetCarsQuery } from "../store/apis/carsApi";
 
 export const CarsList = ({ garage }) => {
   const {
@@ -11,7 +11,11 @@ export const CarsList = ({ garage }) => {
     isError,
   } = useGetCarsQuery(garage);
 
-  const onAddCar = () => {};
+  const [addCar, result] = useAddCarMutation();
+
+  const onAddCar = () => {
+    addCar(garage);
+  };
   const content = () => {
     if (isError) {
       return <h1>Something went wrong...</h1>;

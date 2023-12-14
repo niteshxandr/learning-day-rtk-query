@@ -1,6 +1,9 @@
-import { Button } from "@material-tailwind/react";
+import { Button, Spinner } from "@material-tailwind/react";
 import { GaragesListItem } from "./GaragesListItem";
-import { useGetGaragesQuery } from "../store/apis/garagesApi";
+import {
+  useAddGarageMutation,
+  useGetGaragesQuery,
+} from "../store/apis/garagesApi";
 import { GarageSkeleton } from "./skeletons/GarageSkeleton";
 
 export const GaragesList = () => {
@@ -10,7 +13,12 @@ export const GaragesList = () => {
     isFetching,
     isError,
   } = useGetGaragesQuery();
-  const onAddGarage = () => {};
+
+  const [addGarage, result] = useAddGarageMutation();
+
+  const onAddGarage = () => {
+    addGarage();
+  };
   const content = () => {
     if (isError) {
       return <h1>Something went wrong</h1>;
@@ -30,7 +38,7 @@ export const GaragesList = () => {
       <div className="flex justify-between m-[5px] w-full">
         <div className="text-lg font-bold m-[20px]">Garages</div>{" "}
         <Button color="green" size="md" onClick={onAddGarage}>
-          Add a Garage
+          {result.isLoading ? <Spinner></Spinner> : "Add a Garage"}
         </Button>
       </div>
       {content()}

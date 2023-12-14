@@ -1,19 +1,23 @@
 {
   "garages": [
     {
-      "id": 1,
-      "name": "Garage 1"
-    },
-    {
       "id": 2,
       "name": "Garage 2"
+    },
+    {
+      "name": "maroon",
+      "id": 3
     }
   ],
   "cars": [
     {
-      "id": 1,
-      "name": "Porsche",
-      "garageId": 1
+      "name": "Element",
+      "id": 1
+    },
+    {
+      "name": "A8",
+      "garageId": 2,
+      "id": 2
     }
   ]
 }

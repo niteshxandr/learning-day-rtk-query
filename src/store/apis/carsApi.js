@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { fetchFn } from "../utils";
+import { faker } from "@faker-js/faker";
 
 export const carsApi = createApi({
   reducerPath: "cars",
@@ -13,7 +14,24 @@ export const carsApi = createApi({
         },
       }),
     }),
+    addCar: builder.mutation({
+      query: (garage) => ({
+        url: "/cars",
+        method: "POST",
+        body: {
+          name: faker.vehicle.model(),
+          garageId: garage.id,
+        },
+      }),
+    }),
+    removeCar: builder.mutation({
+      query: (car) => ({
+        url: `/cars/${car.id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetCarsQuery } = carsApi;
+export const { useGetCarsQuery, useAddCarMutation, useRemoveCarMutation } =
+  carsApi;
