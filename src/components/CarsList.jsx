@@ -2,7 +2,7 @@ import { Button } from "@material-tailwind/react";
 import CarListItem from "./CarsListItem";
 import { CarSkeleton } from "./skeletons/CarSkeleton";
 
-export const CarsList = ({ advertiser }) => {
+export const CarsList = ({ garage  }) => {
   const [isError, isLoading, isFetching, cars] = [
     false,
     false,
