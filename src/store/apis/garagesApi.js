@@ -28,7 +28,19 @@ export const garagesApi = createApi({
         url: `/garages/${garage.id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Garages"],
+      async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          garagesApi.util.updateQueryData("getGarages", undefined, (draft) => {
+            return draft.filter(({ id: garageId }) => garageId != id);
+          })
+        );
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo();
+        }
+      },
+      // invalidatesTags: ["Garages"],
     }),
   }),
 });
