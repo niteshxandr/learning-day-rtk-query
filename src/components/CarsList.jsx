@@ -1,17 +1,15 @@
 import { Button } from "@material-tailwind/react";
 import CarListItem from "./CarsListItem";
 import { CarSkeleton } from "./skeletons/CarSkeleton";
+import { useGetCarsQuery } from "../store/apis/carsApi";
 
-export const CarsList = ({ garage  }) => {
-  const [isError, isLoading, isFetching, cars] = [
-    false,
-    false,
-    false,
-    [
-      { id: 1, name: "GranTurismo" },
-      { id: 2, name: "Levante" },
-    ],
-  ];
+export const CarsList = ({ garage }) => {
+  const {
+    data: cars,
+    isLoading,
+    isFetching,
+    isError,
+  } = useGetCarsQuery(garage);
 
   const onAddCar = () => {};
   const content = () => {
