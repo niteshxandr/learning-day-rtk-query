@@ -13,6 +13,9 @@ export const carsApi = createApi({
           garageId: garage.id,
         },
       }),
+      providesTags: (result, error, garage) => {
+        return [{ type: "GarageCars", id: garage.id }];
+      },
     }),
     addCar: builder.mutation({
       query: (garage) => ({
@@ -23,12 +26,21 @@ export const carsApi = createApi({
           garageId: garage.id,
         },
       }),
+      invalidatesTags: (result, error, garage) => {
+        return [{ type: "GarageCars", id: garage.id }];
+      },
+      providesTags: (result, error, garage) => {
+        return [{ type: "GarageCars", id: garage.id }];
+      },
     }),
     removeCar: builder.mutation({
       query: (car) => ({
         url: `/cars/${car.id}`,
         method: "DELETE",
       }),
+      invalidatesTags: (result, error, car) => {
+        return [{ type: "GarageCars", id: car.garageId }];
+      },
     }),
   }),
 });

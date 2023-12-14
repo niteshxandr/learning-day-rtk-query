@@ -5,8 +5,36 @@
       "name": "Garage 2"
     },
     {
-      "name": "maroon",
-      "id": 3
+      "name": "fuchsia",
+      "id": 4
+    },
+    {
+      "name": "teal",
+      "id": 5
+    },
+    {
+      "name": "violet",
+      "id": 6
+    },
+    {
+      "name": "orchid",
+      "id": 7
+    },
+    {
+      "name": "yellow",
+      "id": 8
+    },
+    {
+      "name": "silver",
+      "id": 9
+    },
+    {
+      "name": "olive",
+      "id": 10
+    },
+    {
+      "name": "gold",
+      "id": 11
     }
   ],
   "cars": [
@@ -18,6 +46,31 @@
       "name": "A8",
       "garageId": 2,
       "id": 2
+    },
+    {
+      "name": "Volt",
+      "garageId": 2,
+      "id": 3
+    },
+    {
+      "name": "Expedition",
+      "garageId": 2,
+      "id": 4
+    },
+    {
+      "name": "Corvette",
+      "garageId": 4,
+      "id": 6
+    },
+    {
+      "name": "Cruze",
+      "garageId": 4,
+      "id": 7
+    },
+    {
+      "name": "Sentra",
+      "garageId": 4,
+      "id": 8
     }
   ]
 }

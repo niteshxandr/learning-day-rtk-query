@@ -11,6 +11,7 @@ export const garagesApi = createApi({
   endpoints: (builder) => ({
     getGarages: builder.query({
       query: () => "/garages",
+      providesTags: ["Garages"],
     }),
     addGarage: builder.mutation({
       query: () => ({
@@ -20,12 +21,14 @@ export const garagesApi = createApi({
           name: faker.color.human(),
         },
       }),
+      invalidatesTags: ["Garages"],
     }),
     removeGarage: builder.mutation({
       query: (garage) => ({
         url: `/garages/${garage.id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Garages"],
     }),
   }),
 });

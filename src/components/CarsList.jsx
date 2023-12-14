@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react";
+import { Button, Spinner } from "@material-tailwind/react";
 import CarListItem from "./CarsListItem";
 import { CarSkeleton } from "./skeletons/CarSkeleton";
 import { useAddCarMutation, useGetCarsQuery } from "../store/apis/carsApi";
@@ -30,7 +30,7 @@ export const CarsList = ({ garage }) => {
   return (
     <div className="flex flex-col items-start">
       <Button color="indigo" onClick={onAddCar}>
-        Add a car
+        {result.isLoading ? <Spinner></Spinner> : "Add a car"}
       </Button>
       <div className="flex flex-row gap-[10px] my-[10px] flex-wrap">
         {content()}
