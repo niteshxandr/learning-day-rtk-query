@@ -1,15 +1,19 @@
 {
-    "garages": [{
-        "id": 1,
-        "name": "Garage 1"
+  "garages": [
+    {
+      "id": 1,
+      "name": "Garage 1"
     },
     {
-        "id": 2,
-        "name": "Garage 2"
-    }],
-    "cars": [{
-        "id": 1,
-        "name": "Porsche",
-        "garageId": 1
-    }]
+      "id": 2,
+      "name": "Garage 2"
+    }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "name": "Porsche",
+      "garageId": 1
+    }
+  ]
 }

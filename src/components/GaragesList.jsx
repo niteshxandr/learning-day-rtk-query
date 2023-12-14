@@ -1,10 +1,25 @@
 import { Button } from "@material-tailwind/react";
 import { GaragesListItem } from "./GaragesListItem";
+import { useGetGaragesQuery } from "../store/apis/garagesApi";
+import { GarageSkeleton } from "./skeletons/GarageSkeleton";
 
 export const GaragesList = () => {
+  const {
+    data: garages,
+    isLoading,
+    isFetching,
+    isError,
+  } = useGetGaragesQuery();
   const onAddGarage = () => {};
-  const garages = [{ name: "A & B" }, { name: "C & D" }];
   const content = () => {
+    if (isError) {
+      return <h1>Something went wrong</h1>;
+    }
+    if (isLoading || isFetching) {
+      return Array(3)
+        .fill(0)
+        .map((_, i) => <GarageSkeleton key={i}></GarageSkeleton>);
+    }
     return garages.map((garage) => {
       return <GaragesListItem key={garage.id} garage={garage} />;
     });
